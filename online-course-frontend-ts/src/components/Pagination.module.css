@@ -1,0 +1,72 @@
+.App {
+  display: flex;
+  font-family: sans-serif;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 90vh;
+}
+
+.pagination {
+  list-style: none;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  cursor: pointer;
+  font-family: monospace;
+  padding: 0;
+}
+
+.active {
+  background-color: #1ec6ff;
+  border-radius: 10px;
+}
+
+.pageitem {
+  list-style: none;
+  padding: 2px 5px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.previous button,
+.next button {
+  background-color: none;
+  border-radius: 10px;
+  height: 40px;
+  padding: 5px 10px;
+  border: 1px solid #d4d4d4;
+}
+
+.previous button:hover,
+.next button:hover {
+  cursor: pointer;
+  background-color: #1ec6ff;
+}
+
+.list {
+  width: 400px;
+  border: 1px solid #d4d4d4;
+  border-radius: 10px;
+  padding: 10px;
+  display: grid;
+  row-gap: 10px;
+}
+
+.list-item {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.list-item:nth-child(2n) {
+  background-color: #eeeeee;
+}
