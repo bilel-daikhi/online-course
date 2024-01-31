@@ -27,7 +27,7 @@ private String description;
 @NotBlank
 private String image;
 private Date date;
-@NotNullxx
+@NotNull
 private double price;
 private boolean isNew=true;
 private int reduction;
