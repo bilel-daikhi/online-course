@@ -2,7 +2,7 @@ import React from "react";
 import {     ActionFunction, Form, json, redirect, useActionData, useNavigate, useNavigation } from "react-router-dom";
 import { Course } from "../models/course.model";
 import { getAuthToken } from "../utils/auth";
-
+import { config } from '../utils/Constants'
 const CourseForm:React.FC<{ method:string, course?:Course }> = ({ method, course }) =>{
     const data = useActionData() as {errors:string[],};
     const navigate = useNavigate();
@@ -101,12 +101,12 @@ const CourseForm:React.FC<{ method:string, course?:Course }> = ({ method, course
       price: 100,
     };
   
-    let url = "http://localhost:8080/api/v1/courses";
+    let url = config.url.API_URL+"/v1/courses";
   
     if (method === "PATCH") {
       const courseId = params.courseId;
   
-      url = "http://localhost:8080/api/v1/courses/" + courseId;
+      url = config.url.API_URL+"/v1/courses/" + courseId;
     }
   
     const token = getAuthToken();

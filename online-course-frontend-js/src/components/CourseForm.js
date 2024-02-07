@@ -6,7 +6,7 @@ import {
   json,
   redirect,
 } from "react-router-dom";
-
+import { config } from "../utils/Constants";
 import React from "react";
 import { getAuthToken } from "../util/auth";
 
@@ -105,12 +105,12 @@ export async function action({ request, params }) {
     price: 100,
   };
 
-  let url = "http://localhost:8080/api/v1/courses";
+  let url = config.url.API_URL + "/v1/courses";
 
   if (method === "PATCH") {
     const courseId = params.courseId;
 
-    url = "http://localhost:8080/api/v1/courses/" + courseId;
+    url = config.url.API_URL + "/v1/courses/" + courseId;
   }
 
   const token = getAuthToken();

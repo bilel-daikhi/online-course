@@ -1,7 +1,7 @@
 import React from "react";
 import { json, redirect } from "react-router-dom";
 import { AuthForm } from "../components/AuthForm";
-
+import { config } from '../utils/Constants'
 const AuthenticationPage : React.FC=() =>{
     return <AuthForm />;
   }
@@ -21,7 +21,7 @@ const AuthenticationPage : React.FC=() =>{
       password: data.get("password"),
     };
   
-    const response = await fetch("http://localhost:8080/api/v1/auth/signin", {
+    const response = await fetch(config.url.API_URL+"/v1/auth/signin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

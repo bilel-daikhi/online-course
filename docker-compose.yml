@@ -1,0 +1,19 @@
+version: '3'
+services:
+  online-courses-backend:
+      build:
+        context: ./online-course-backend
+        dockerfile: Dockerfile
+      ports:
+        - "8181:8181"
+
+  online-courses-frontend:
+      build:
+        context: ./online-course-frontend-ts
+        dockerfile: Dockerfile
+      ports:
+        - "8080:80"
+      depends_on:
+        - online-courses-backend
+      volumes:
+        - ./online-course-frontend-ts/ngnix/ngnix.conf:/etc/nginx/conf.d/default.conf

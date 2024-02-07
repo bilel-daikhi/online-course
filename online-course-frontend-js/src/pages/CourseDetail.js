@@ -5,8 +5,8 @@ import {
   defer,
   Await,
   redirect,
-  useNavigate,
 } from "react-router-dom";
+import { config } from "../utils/Constants";
 import React from "react";
 import CourseItem from "../components/CourseItem";
 import CoursesList from "../components/CoursesList";
@@ -44,7 +44,7 @@ function CourseDetailPage() {
 export default CourseDetailPage;
 
 async function loadCourse(id) {
-  const response = await fetch("http://localhost:8080/api/v1/courses/" + id);
+  const response = await fetch(config.url.API_URL + "/v1/courses/" + id);
 
   if (!response.ok) {
     throw json(
@@ -62,7 +62,8 @@ async function loadCourse(id) {
 
 async function loadCourses(pageSize, pageNumber) {
   const response = await fetch(
-    "http://localhost:8080/api/v1/courses?" +
+    config.url.API_URL +
+      "/v1/courses?" +
       new URLSearchParams({
         page: pageNumber,
         size: pageSize,
@@ -95,15 +96,12 @@ export async function action({ params, request }) {
   const courseId = params.courseId;
 
   const token = getAuthToken();
-  const response = await fetch(
-    "http://localhost:8080/api/v1/courses/" + courseId,
-    {
-      method: request.method,
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    }
-  );
+  const response = await fetch(config.url.API_URL + "/v1/courses/" + courseId, {
+    method: request.method,
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
   console.log("response.ok: " + response.ok);
   if (!response.ok) {
     throw json(

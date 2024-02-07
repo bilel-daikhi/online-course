@@ -3,7 +3,7 @@ import { Await, defer, json, useLoaderData, useNavigate } from "react-router-dom
 import { Course } from "../models/course.model";
 import { Suspense } from "react";
 import CoursesList from "../components/CoursesList";
-
+import { config } from '../utils/Constants'
 export const CoursesPage =()=>{
     const { courses } = useLoaderData() as {courses:Course[]};
   
@@ -31,7 +31,7 @@ export const CoursesPage =()=>{
   
   async function loadCourses(size = '12', page:string) {
     const response = await fetch(
-      "http://localhost:8080/api/v1/courses?" +
+      config.url.API_URL+"/v1/courses?" +
         new URLSearchParams({
           page: page,
           size: size,

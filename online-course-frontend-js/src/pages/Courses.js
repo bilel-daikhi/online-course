@@ -5,8 +5,8 @@ import {
   defer,
   Await,
   useNavigate,
-  redirect,
 } from "react-router-dom";
+import { config } from "../utils/Constants";
 import React from "react";
 import CoursesList from "../components/CoursesList";
 
@@ -39,7 +39,8 @@ export default CoursesPage;
 
 async function loadCourses(size = 12, page) {
   const response = await fetch(
-    "http://localhost:8080/api/v1/courses?" +
+    config.url.API_URL +
+      "/v1/courses?" +
       new URLSearchParams({
         page: page,
         size: size,

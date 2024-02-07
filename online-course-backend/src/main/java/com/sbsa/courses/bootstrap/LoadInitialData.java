@@ -9,7 +9,9 @@ import com.sbsa.courses.repositories.UserRepository;
 import com.sbsa.courses.services.UserDetailsImpl;
 import com.sbsa.courses.services.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,6 +23,7 @@ import java.net.URISyntaxException;
 import java.util.*;
 
 @Component
+@Profile({"dev","prod"})
 public class LoadInitialData implements CommandLineRunner {
 
     public static final String PROJECTS_URL = "https://bilel-daikhi-portfolio-default-rtdb.europe-west1.firebasedatabase.app/projects.json";

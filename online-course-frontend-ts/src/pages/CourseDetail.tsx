@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import CourseItem from "../components/CourseItem";
 import CoursesList from "../components/CoursesList";
 import { getAuthToken } from "../utils/auth";
-
+import { config } from '../utils/Constants'
 export const CourseDetailPage =()=>{
     const { course, courses } = useRouteLoaderData("course-detail") as {course:Course,courses:Course[]};
     const handleClickPage = (selected:string) => {
@@ -38,7 +38,7 @@ export const CourseDetailPage =()=>{
   export default CourseDetailPage;
   
   async function loadCourse(id:string) {
-    const response = await fetch("http://localhost:8080/api/v1/courses/" + id);
+    const response = await fetch(config.url.API_URL+"/v1/courses/" + id);
   
     if (!response.ok) {
       throw json(
@@ -56,7 +56,7 @@ export const CourseDetailPage =()=>{
   
   async function loadCourses(pageSize:string, pageNumber:string) {
     const response = await fetch(
-      "http://localhost:8080/api/v1/courses?" +
+      config.url.API_URL+"/v1/courses?" +
         new URLSearchParams({
           page: pageNumber,
           size: pageSize,
@@ -93,7 +93,7 @@ export const CourseDetailPage =()=>{
   
     const token = getAuthToken();
     const response = await fetch(
-      "http://localhost:8080/api/v1/courses/" + courseId,
+      config.url.API_URL+"/v1/courses/" + courseId,
       {
         method: request.method,
         headers: {
